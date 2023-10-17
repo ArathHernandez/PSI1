@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+
+    <style>
+        body {
+            background-color: #f2f2f2;
+            color: #333;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #009688;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        input {
+            width: 300px;
+            padding: 5px;
+            font-size: 1em;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 5px 10px;
+            font-size: 1em;
+            background-color: #009688;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #00796b;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .positive {
+            color: green;
+            font-weight: bold;
+        }
+
+        .neutral {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .negative {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sentiment Analysis</h1>
+    <form action="/" method="POST">
+        <label for="user_input">Enter your phrase:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <button type="submit">Analyze</button>
+    </form>
+    {% if user_input %}
+        <p>You entered: "{{ user_input }}"</p>
+        <p>Sentiment: 
+            {% if sentiment == 'Positive' %}
+                <span class="positive">😊 Positive</span>
+            {% elif sentiment == 'Neutral' %}
+                <span class="neutral">😐 Neutral</span>
+            {% else %}
+                <span class="negative">😠 Negative</span>
+            {% endif %}
+        </p>
+    {% endif %}
+</body>
+</html>
